@@ -58,7 +58,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private class DefaultConfigureOptions : ConfigureDefaultOptions<AuthenticationOptions>
         {
-            // Bind to "Bearer" section by default
             public DefaultConfigureOptions(IConfiguration config) :
                 base(options => config.GetSection("Microsoft:AspNetCore:Authentication").Bind(options))
             { }
