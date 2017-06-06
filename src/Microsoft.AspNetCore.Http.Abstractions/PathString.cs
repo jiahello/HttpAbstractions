@@ -443,6 +443,7 @@ namespace Microsoft.AspNetCore.Http
         /// </summary>
         /// <param name="s"></param>
         public static implicit operator PathString(string s)
+            => ConvertFromString(s);
 
         /// <summary>
         /// Implicitly calls ToString().
