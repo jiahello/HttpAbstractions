@@ -443,9 +443,6 @@ namespace Microsoft.AspNetCore.Http
         /// </summary>
         /// <param name="s"></param>
         public static implicit operator PathString(string s)
-        {
-            return new PathString(s);
-        }
 
         /// <summary>
         /// Implicitly calls ToString().
@@ -455,6 +452,9 @@ namespace Microsoft.AspNetCore.Http
         {
             return path.ToString();
         }
+
+        internal static PathString ConvertFromString(string s)
+            => string.IsNullOrEmpty(s) ? new PathString(s) : FromUriComponent(s);
     }
 
     internal class PathStringConverter : TypeConverter
@@ -466,7 +466,7 @@ namespace Microsoft.AspNetCore.Http
 
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
             => value is string 
-            ? new PathString((string)value) 
+            ? PathString.ConvertFromString((string)value) 
             : base.ConvertFrom(context, culture, value);
 
         public override object ConvertTo(ITypeDescriptorContext context,
