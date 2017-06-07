@@ -10,7 +10,7 @@ namespace Microsoft.AspNetCore.Http.Features.Authentication
     {
         ClaimsPrincipal User { get; set; }
 
-        [Obsolete("This is obsolete and will be removed in a future version. The recommended alternative is to use Microsoft.AspNetCore.Authentication.AuthenticationHttpContextExtensions. See https://go.microsoft.com/fwlink/?linkid=845470.")]
+        [Obsolete("This is obsolete and will be removed in a future version. See https://go.microsoft.com/fwlink/?linkid=845470.")]
         IAuthenticationHandler Handler { get; set; }
     }
 }
